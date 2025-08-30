@@ -1,4 +1,7 @@
 :root {
+background-color: var(--color-scheme-1-background);
+color: var(--color-scheme-1-text);
+
   --font-family: "IBM Plex Sans", sans-serif;
   --second-family: "Epilogue", sans-serif;
   --third-family: "Roboto", sans-serif;
