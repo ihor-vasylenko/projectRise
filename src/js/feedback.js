@@ -1,12 +1,10 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 import Raty from 'raty-js';
-import 'css-star-rating/css/star-rating.css';
 
 import { getFeedbacks } from './api.js';
 
@@ -17,12 +15,15 @@ async function initFeedbacks() {
 
   wrapper.innerHTML = feedbacks
     .map(
+      // the rating string with *STARS* just for easier css styles, remove when actual stars appears.
       item => `
-        <div class="swiper-slide">
-        <div class="rating" data-score="${item.rating}"></div>
-          <p>${item.descr}</p>
-          <h3>${item.name}</h3>
-        </div>
+    <div class="swiper-slide">
+      <div class="feedback-slide">
+        <div class="rating" data-score="${item.rating}">*STARS*</div>
+        <p class="feedback-text">${item.descr}</p>
+        <h4 class="feedback-name">${item.name}</h4>
+      </div>
+    </div>
       `
     )
     .join('');
@@ -35,28 +36,57 @@ async function initFeedbacks() {
       score: el.dataset.score,
     });
   });
+
   const swiper = new Swiper('.swiper', {
-    modules: [Navigation, Pagination],
+    modules: [Navigation],
     slidesPerView: 1,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
     allowTouchMove: true,
-
-    pagination: {
-      el: '.swiper-pagination',
-      renderBullet: function (index, className) {
-        if (index === 0) return `<span class="${className} first-dot"></span>`;
-        else if (index === 1)
-          return `<span class="${className} middle-dot"></span>`;
-        else if (index === 2)
-          return `<span class="${className} last-dot"></span>`;
-        return '';
+    on: {
+      init() {
+        createCustomPagination(this);
+        updateCustomPagination(this);
+      },
+      slideChange() {
+        updateCustomPagination(this);
       },
     },
-    breakpoints: {},
   });
+}
+
+function createCustomPagination(swiper) {
+  const pagination = document.querySelector('.swiper-pagination');
+  pagination.innerHTML = '';
+
+  const dots = ['first', 'middle', 'last'];
+  dots.forEach(type => {
+    const dot = document.createElement('button');
+    dot.classList.add('custom-dot', `dot-${type}`);
+    dot.setAttribute('type', 'button');
+    dot.addEventListener('click', () => {
+      if (type === 'first') swiper.slideTo(0);
+      if (type === 'middle')
+        swiper.slideTo(Math.floor(swiper.slides.length / 2));
+      if (type === 'last') swiper.slideTo(swiper.slides.length - 1);
+    });
+    pagination.appendChild(dot);
+  });
+}
+
+function updateCustomPagination(swiper) {
+  const dots = document.querySelectorAll('.custom-dot');
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  if (swiper.realIndex === 0) {
+    document.querySelector('.dot-first').classList.add('active');
+  } else if (swiper.realIndex === swiper.slides.length - 1) {
+    document.querySelector('.dot-last').classList.add('active');
+  } else {
+    document.querySelector('.dot-middle').classList.add('active');
+  }
 }
 
 initFeedbacks();
