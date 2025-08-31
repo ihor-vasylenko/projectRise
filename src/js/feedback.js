@@ -19,16 +19,16 @@ async function initFeedbacks() {
     .map(
       item => `
         <div class="swiper-slide">
-          <h3>${item.name}</h3>
+        <div class="rating" data-score="${item.rating}"></div>
           <p>${item.descr}</p>
-          <div class="rating" data-score="${item.rating}"></div>
+          <h3>${item.name}</h3>
         </div>
       `
     )
     .join('');
 
-  //  raty-js (not working)
-  document.querySelectorAll('.rating').forEach(el => {
+  //  raty-js
+  document.querySelectorAll('[data-raty]').forEach(el => {
     new Raty(el, {
       starType: 'i',
       readOnly: true,
@@ -46,8 +46,16 @@ async function initFeedbacks() {
 
     pagination: {
       el: '.swiper-pagination',
-      renderBullet: function (index, className) {},
+      renderBullet: function (index, className) {
+        if (index === 0) return `<span class="${className} first-dot"></span>`;
+        else if (index === 1)
+          return `<span class="${className} middle-dot"></span>`;
+        else if (index === 2)
+          return `<span class="${className} last-dot"></span>`;
+        return '';
+      },
     },
+    breakpoints: {},
   });
 }
 
