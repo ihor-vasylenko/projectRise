@@ -1,0 +1,119 @@
+.container {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.hero-section {
+  padding: 0px 64px;
+  background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+  background-color: var(--color-scheme-3-foreground);
+}
+/* .hero-bg {
+} */
+.hero-title {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 20px;
+}
+.hero-paragraph {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 24px;
+}
+.hero-btn {
+  border-radius: 12px;
+
+  width: 288px;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background: var(--color-affair);
+  margin-bottom: 64px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+.hero-btn-icon {
+  fill: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+  .hero-title {
+    margin-bottom: 24px;
+  }
+  .hero-paragraph {
+    margin-bottom: 32px;
+  }
+  .hero-btn {
+    padding: 10px 24px;
+    width: 246px;
+
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 64px;
+  }
+  .hero-title {
+    font-size: 84px;
+  }
+  .hero-paragraph {
+    margin-bottom: 32px;
+  }
+  .hero-btn {
+    border-radius: 12px;
+
+    min-width: 206px;
+    height: 47px;
+    box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+      inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+      inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 32px 24px 0 var(--opacity-white-5);
+    background: var(--color-affair);
+    margin-bottom: 64px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .hero-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-content {
+    max-width: 671px;
+  }
+}
