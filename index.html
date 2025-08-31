@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ArtistHub</title>
     <script type="module" crossorigin src="/projectRise/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/projectRise/assets/index-DFxhzD7X.css">
+    <link rel="modulepreload" crossorigin href="/projectRise/assets/vendor-CM57OJEz.js">
+    <link rel="stylesheet" crossorigin href="/projectRise/assets/vendor-D_nxXpU-.css">
+    <link rel="stylesheet" crossorigin href="/projectRise/assets/index-Jukuo0ji.css">
   </head>
   <body>
     <header>
@@ -89,8 +91,22 @@
   <div class="container">HERO SECTION</div>
 </section>
 
-      <section>
-  <div class="container">ARTISTS SECTION</div>
+      <section class="artists section" id="artists">
+  <div class="container">
+    <h2 class="artists-title">Artists</h2>
+    <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+
+    <ul class="artists-list" id="artists-list" data-page="1"></ul>
+
+    <div class="artists-actions">
+      <button class="btn load-more" id="artists-load-more" type="button">
+        Load More
+        <svg class="icon" width="24" height="24" aria-hidden="true">
+          <use href="/projectRise/assets/icons-1BvoKlMe.svg#icon-down-arrow-alt"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
 </section>
 
       <footer>
