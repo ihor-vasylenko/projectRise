@@ -1,88 +1,120 @@
-import { getArtistDetailsWithAlbums } from './api.js';
+export function initArtistModal() {
+  const modal = document.getElementById('artist-modal');
+  const overlay = document.getElementById('artist-modal-overlay');
+  const closeBtn = document.getElementById('artist-modal-close');
 
-const modal = document.querySelector('#artist-modal');
-const modalContent = modal.querySelector('.modal-content');
-const overlay = document.querySelector('.modal-overlay');
+  const nameEl = modal.querySelector('.artist-name');
+  const imageEl = modal.querySelector('.artist-image img');
+  const infoEl = modal.querySelector('.artist-info');
+  const bioEl = modal.querySelector('.artist-bio p');
+  const genresEl = modal.querySelector('.artist-genres');
+  const albumsEl = modal.querySelector('.artist-albums');
 
-/**
- * Відкрити модальне вікно з деталями артиста
- * @param {string} artistId - ID артиста
- */
-export async function openArtistModal(artistId) {
-  try {
-    const artist = await getArtistDetailsWithAlbums(artistId);
+  const getYoutubeLink = vid => {
+    if (!vid) return '';
+    return vid.startsWith('http')
+      ? vid
+      : `https://www.youtube.com/watch?v=${vid}`;
+  };
 
-    modalContent.innerHTML = `
-      <button class="modal-close">&times;</button>
-      
-      <h2 class="artist-name">${artist.strArtist}</h2>
-      
-      <div class="artist-header">
-        <div class="artist-image">
-          <img src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
-        </div>
-        <div class="artist-details">
-          <p><strong>Years active:</strong> ${artist.intBornYear || ''}–${
-      artist.intDiedYear || 'present'
-    }</p>
-          <p><strong>Sex:</strong> ${artist.strGender || '-'}</p>
-          <p><strong>Members:</strong> ${artist.intMembers || '-'}</p>
-          <p><strong>Country:</strong> ${artist.strCountry || '-'}</p>
-        </div>
-      </div>
+  const formatDuration = ms => {
+    if (!ms || isNaN(ms)) return '-';
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
-      <div class="artist-bio">
-        <h3>Biography</h3>
-        <p>${artist.strBiographyEN || 'No biography available.'}</p>
-      </div>
+  document.addEventListener('artists:open', async e => {
+    const { id, fetchDetails } = e.detail;
 
-      <div class="artist-genres">
-        ${(artist.genres || [])
-          .map(g => `<span class="tag">${g}</span>`)
-          .join('')}
-      </div>
+    try {
+      const artist = await fetchDetails();
 
-      <h3>Albums</h3>
-      <div class="albums-list">
-        ${artist.albumsList
+      nameEl.textContent = artist.strArtist || 'Unknown Artist';
+      imageEl.src = artist.strArtistThumb || '';
+      imageEl.alt = artist.strArtist || 'Artist';
+
+      infoEl.innerHTML = `
+        <li><strong>Years active:</strong> ${artist.intFormedYear || 'N/A'} – ${
+        artist.strDisbanded || 'present'
+      }</li>
+        <li><strong>Sex:</strong> ${artist.strGender || 'N/A'}</li>
+        <li><strong>Members:</strong> ${artist.intMembers || 'N/A'}</li>
+        <li><strong>Country:</strong> ${artist.strCountry || 'N/A'}</li>
+      `;
+
+      bioEl.textContent = artist.strBiographyEN || 'No biography available.';
+
+      genresEl.innerHTML = (artist.genres || [])
+        .map(g => `<span>${g}</span>`)
+        .join('');
+
+      albumsEl.innerHTML = '<h3>Albums</h3>';
+
+      if (artist.albumsList && artist.albumsList.length > 0) {
+        albumsEl.innerHTML += artist.albumsList
           .map(
             album => `
-          <div class="album">
-            <h4>${album.strAlbum}</h4>
-            <ul class="tracks">
-              ${album.tracks
-                .map(
-                  track => `
-                  <li>
-                    ${track.strTrack} 
-                    <span class="duration">${track.intDuration || ''}</span>
-                  </li>`
-                )
-                .join('')}
-            </ul>
-          </div>
-        `
+            <div class="album">
+              <h4>${album.strAlbum || 'Untitled'}</h4>
+              ${
+                Array.isArray(album.tracks) && album.tracks.length > 0
+                  ? `
+                    <table>
+                      <thead>
+                        <tr><th>Title</th><th>Duration</th><th>Link</th></tr>
+                      </thead>
+                      <tbody>
+                        ${album.tracks
+                          .map(
+                            track => `
+                            <tr>
+                              <td>${track.strTrack || 'N/A'}</td>
+                              <td>${formatDuration(track.intDuration)}</td>
+                              <td>${
+                                track.movie
+                                  ? `<a href="${getYoutubeLink(
+                                      track.movie
+                                    )}" target="_blank" rel="noopener noreferrer">▶</a>`
+                                  : '<span style="opacity: 0.5;">—</span>'
+                              }</td>
+                            </tr>
+                          `
+                          )
+                          .join('')}
+                      </tbody>
+                    </table>
+                  `
+                  : '<p>No tracks</p>'
+              }
+            </div>
+          `
           )
-          .join('')}
-      </div>
-    `;
+          .join('');
+      } else {
+        albumsEl.innerHTML += '<p>No albums found</p>';
+      }
 
+      openModal();
+    } catch (err) {
+      console.error('Modal error:', err);
+    }
+  });
+
+  function openModal() {
+    modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('open');
-    overlay.classList.add('open');
-
-    modalContent
-      .querySelector('.modal-close')
-      .addEventListener('click', closeArtistModal, { once: true });
-    overlay.addEventListener('click', closeArtistModal, { once: true });
-  } catch (error) {
-    console.error('Помилка завантаження артиста:', error);
   }
-}
 
-/**
- * Закрити модальне вікно
- */
-export function closeArtistModal() {
-  modal.classList.remove('open');
-  overlay.classList.remove('open');
+  function closeModal() {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
 }

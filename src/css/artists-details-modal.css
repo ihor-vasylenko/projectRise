@@ -1,65 +1,171 @@
-.modal {
+/* ====== Overlay ====== */
+#artist-modal {
     position: fixed;
     inset: 0;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    background: rgba(18, 18, 18, 0.7);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.modal[aria-hidden="false"] {
-    display: flex;
+#artist-modal.open {
+    opacity: 1;
+    visibility: visible;
 }
 
-.modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.modal-content {
+/* ====== Modal content ====== */
+#artist-modal .modal-content {
     position: relative;
-    background: #111;
+    background: #1e1e1e;
     color: #fff;
-    padding: 20px;
-    max-width: 900px;
+    max-width: 800px;
     width: 100%;
-    border-radius: 12px;
-    z-index: 1001;
-    overflow-y: auto;
     max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.4s ease;
 }
 
-.modal-close {
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== Close button ====== */
+#artist-modal .modal-close {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 16px;
+    right: 16px;
     background: none;
     border: none;
-    color: #fff;
     font-size: 28px;
+    color: #fff;
     cursor: pointer;
+    transition: color 0.2s;
 }
 
-.artist-genres span {
+#artist-modal .modal-close:hover {
+    color: #ff5252;
+}
+
+/* ====== Artist name ====== */
+#artist-modal .artist-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ====== Artist image ====== */
+#artist-modal .artist-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#artist-modal .artist-image img {
+    max-width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ====== Info list ====== */
+#artist-modal .artist-info {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#artist-modal .artist-info li {
+    margin-bottom: 6px;
+}
+
+/* ====== Biography ====== */
+#artist-modal .artist-bio h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#artist-modal .artist-bio p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* ====== Genres ====== */
+#artist-modal .artist-genres {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#artist-modal .artist-genres span {
     background: #333;
-    padding: 5px 10px;
-    border-radius: 8px;
-    margin-right: 5px;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.album {
-    margin-top: 20px;
+/* ====== Albums & Tracks ====== */
+#artist-modal .artist-albums h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 24px 0 12px;
 }
 
-.album table {
+#artist-modal .album h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#artist-modal table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 14px;
 }
 
-.album th,
-.album td {
-    border-bottom: 1px solid #444;
-    padding: 6px;
+#artist-modal th,
+#artist-modal td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+#artist-modal th {
     text-align: left;
+    color: #aaa;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+#artist-modal td a {
+    color: #ff5252;
+    font-size: 16px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+#artist-modal td a:hover {
+    opacity: 0.7;
 }
