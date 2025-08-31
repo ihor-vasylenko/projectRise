@@ -6,21 +6,18 @@ html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 90px;
 }
-
 body {
 	padding-top: 80px;
 }
-
 .logo-artist-image,
 .burger-button-logo {
 	fill: var(--color-scheme-2-accent);
-	transition: 0.5s ease-in-out;
+	transition: 0.3s ease-in-out;
 }
 
 .logo-artists:hover .logo-artist-image {
 	fill: var(--color-affair);
 }
-
 .top-nav {
 	display: flex;
 	flex-direction: row;
@@ -30,7 +27,6 @@ body {
 	min-width: 295px;
 	position: fixed;
 	top: 0;
-
 	z-index: 1000;
 	background-color: var(--color-scheme-1-background);
 }
@@ -39,7 +35,7 @@ body {
 	display: flex;
 	align-items: center;
 	display: none;
-	transition: 0.5s ease-in-out;
+	transition: 0.3s ease-in-out;
 
 }
 
@@ -58,7 +54,7 @@ body {
 
 .top-nav-menu-links::after {
 	content: "";
-	transition: 0.5s ease-in-out;
+	transition: 0.3s ease-in-out;
 }
 
 .top-nav-menu-links:hover::after,
@@ -119,7 +115,7 @@ body {
 	height: 100%;
 	z-index: 1001;
 	padding: 6.5px 0 6.5px;
-	transition: 1s ease-in-out;
+	transition: 0.3s ease-in-out;
 }
 
 .top-nav-menu-items-mobile {
@@ -139,7 +135,6 @@ body {
 body.lock {
 	overflow: hidden;
 }
-
 @media only screen and (min-width: 768px) {
 	body {
 		padding-top: 87px;
