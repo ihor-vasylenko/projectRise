@@ -35,8 +35,6 @@ body {
 	display: flex;
 	align-items: center;
 	display: none;
-	transition: 0.3s ease-in-out;
-
 }
 
 .top-nav-menu-links {
@@ -47,7 +45,7 @@ body {
 	color: var(--color-scheme-1-text);
 	display: block;
 	position: relative;
-	transition: 1s ease-in-out;
+	transition: 0.3s ease-in-out;
 	padding-bottom: 5px;
 	text-transform: capitalize;
 }
@@ -115,7 +113,6 @@ body {
 	height: 100%;
 	z-index: 1001;
 	padding: 6.5px 0 6.5px;
-	transition: 0.3s ease-in-out;
 }
 
 .top-nav-menu-items-mobile {
