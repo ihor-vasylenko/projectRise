@@ -35,13 +35,25 @@
 }
 
 .footer-credits {
-    margin: 48px 0 48px 0;
+    margin: 48px 0;
     width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+
+    position: relative;
+}
+
+
+.footer-credits::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .social-icons {
@@ -102,6 +114,11 @@
         align-items: center;
     }
 
+    .footer-credits::before {
+        left: 32px;
+        right: 32px;
+    }
+
     .credits-text {
         order: 1;
         text-align: left;
@@ -131,7 +148,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
     .svg-footer {
         width: 20px;
         height: 20px;
@@ -139,5 +156,10 @@
 
     .footer-credits {
         padding: 32px 62px 0 62px;
+    }
+
+    .footer-credits::before {
+        left: 64px;
+        right: 64px;
     }
 }
