@@ -14,30 +14,34 @@
         </svg>
       </button>
     </div>
-
-    <picture class="hero-bg">
-      <source
-        srcset="
-          /img/desktop/desktop-hero-@1x.jpg 1x,
-          /img/desktop/desktop-hero-@2x.jpg 2x
-        "
-        media="(min-width: 1336px)"
-      />
-      <source
-        srcset="
-          /img/tablet/tablet-hero-@1x.jpg 1x,
-          /img/tablet/tablet-hero-@2x.jpg 2x
-        "
-        media="(min-width: 768px)"
-      />
-      <source
-        srcset="
-          /img/mobile/mobile-hero-@1x.jpg 1x,
-          /img/mobile/mobile-hero-@2x.jpg 2x
-        "
-        media="(max-width: 767px)"
-      />
-      <img src="/img/mobile/mobile-hero-@1x.jpg" alt="background image hero" />
-    </picture>
+    <div class="hero-image">
+      <picture class="hero-bg">
+        <source
+          srcset="
+            /img/desktop/desktop-hero-@1x.png 1x,
+            /img/desktop/desktop-hero-@2x.png 2x
+          "
+          media="(min-width: 1336px)"
+        />
+        <source
+          srcset="
+            /img/tablet/tablet-hero-@1x.png 1x,
+            /img/tablet/tablet-hero-@2x.png 2x
+          "
+          media="(min-width: 768px)"
+        />
+        <source
+          srcset="
+            /img/mobile/mobile-hero-@1x.png 1x,
+            /img/mobile/mobile-hero-@2x.png 2x
+          "
+          media="(max-width: 767px)"
+        />
+        <img
+          src="/img/mobile/mobile-hero-@1x.jpg"
+          alt="background image hero"
+        />
+      </picture>
+    </div>
   </div>
 </section>

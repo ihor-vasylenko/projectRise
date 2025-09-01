@@ -3,13 +3,22 @@
   margin: 0 auto;
   padding: 0 16px;
 }
+img {
+  background-color: black;
+}
 .hero-section {
   padding: 0px 64px;
   background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
   background-color: var(--color-scheme-3-foreground);
 }
-/* .hero-bg {
-} */
+.hero-bg {
+  display: block;
+  background-color: inherit;
+}
+.hero-image {
+  background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+  background-color: var(--color-scheme-3-foreground);
+}
 .hero-title {
   font-family: var(--second-family);
   font-weight: 700;
