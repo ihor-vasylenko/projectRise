@@ -25,16 +25,16 @@ async function initFeedbacks() {
       </div>
     </div>
       `
-    )
-    .join('');
+    ).join('');
 
-  //  raty-js
+
+   // raty-js
   document.querySelectorAll('[data-raty]').forEach(el => {
     new Raty(el, {
       starType: 'i',
-      readOnly: true,
-      score: el.dataset.score,
-    });
+		 readOnly: true,
+		 score: el.dataset.score,
+	 });
   });
 
   const swiper = new Swiper('.swiper', {
