@@ -10,3 +10,5 @@ import { initArtistModal } from './js/artists-details-modal.js';
 document.addEventListener('DOMContentLoaded', () => {
   initArtistModal();
 });
+
+import './js/feedback.js';
