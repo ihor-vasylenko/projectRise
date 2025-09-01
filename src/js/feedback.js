@@ -5,6 +5,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { getFeedbacks } from './api.js';
 
+import icons from '/img/icons.svg?url';
+
 // swiper's slides
 async function initFeedbacks() {
   const { data: feedbacks } = await getFeedbacks({ limit: 10, page: 1 });
@@ -60,7 +62,7 @@ function renderStars() {
         <svg width="20" height="20" class="star" style="fill: ${
           i <= score ? 'var(--color-affair)' : 'var(--color-scheme-1-text)'
         }">
-          <use href="/img/icons.svg#icon-star"></use>
+          <use href="${icons}#icon-star"></use>
         </svg>
       `;
       ratingEl.insertAdjacentHTML('beforeend', svg);
