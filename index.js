@@ -24,7 +24,7 @@ import{a as d,i as h,S as v,N as b}from"./assets/vendor-DircHDZc.js";(function()
     </div>
       `).join(""),j(),new v(".swiper",{modules:[b],slidesPerView:1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},allowTouchMove:!0,on:{init(){H(this),m(this)},slideChange(){m(this)}}})}function j(){document.querySelectorAll(".rating").forEach(t=>{const o=parseInt(t.dataset.score,10)||0;t.innerHTML="";for(let r=1;r<=5;r++){const s=`
         <svg width="20" height="20" class="star" style="fill: ${r<=o?"var(--color-affair)":"var(--color-scheme-1-text)"}">
-          <use href="img/icons.svg#icon-star"></use>
+          <use href="/img/icons.svg#icon-star"></use>
         </svg>
       `;t.insertAdjacentHTML("beforeend",s)}})}function H(e){const t=document.querySelector(".swiper-pagination");t.innerHTML="",["first","middle","last"].forEach(r=>{const s=document.createElement("button");s.classList.add("custom-dot",`dot-${r}`),s.setAttribute("type","button"),s.addEventListener("click",()=>{r==="first"&&e.slideTo(0),r==="middle"&&e.slideTo(Math.floor(e.slides.length/2)),r==="last"&&e.slideTo(e.slides.length-1)}),t.appendChild(s)})}function m(e){document.querySelectorAll(".custom-dot").forEach(o=>o.classList.remove("active")),e.realIndex===0?document.querySelector(".dot-first").classList.add("active"):e.realIndex===e.slides.length-1?document.querySelector(".dot-last").classList.add("active"):document.querySelector(".dot-middle").classList.add("active")}O();M();
 //# sourceMappingURL=index.js.map
