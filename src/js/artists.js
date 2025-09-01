@@ -142,8 +142,7 @@ function cardTemplate(a) {
         <button class="link-more" type="button" data-learn-more>
           Learn More
           <svg class="icon" width="24" height="24" aria-hidden="true">
-            <!-- если спрайт инлайн в index.html: use href="#icon-filled-arrow" -->
-            <use href="./img/icons.svg#icon-filled-arrow"></use>
+            <use href="/img/icons.svg#icon-filled-arrow"></use>
           </svg>
         </button>
       </div>
@@ -209,3 +208,4 @@ function escapeHtml(str = '') {
     .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
