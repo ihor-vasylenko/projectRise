@@ -60,7 +60,7 @@ function renderStars() {
         <svg width="20" height="20" class="star" style="fill: ${
           i <= score ? 'var(--color-affair)' : 'var(--color-scheme-1-text)'
         }">
-          <use href="img/icons.svg#icon-star"></use>
+          <use href="/img/icons.svg#icon-star"></use>
         </svg>
       `;
       ratingEl.insertAdjacentHTML('beforeend', svg);
