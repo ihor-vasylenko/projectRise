@@ -3,11 +3,9 @@ import { Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-import Raty from 'raty-js';
-
 import { getFeedbacks } from './api.js';
 
+// swiper's slides
 async function initFeedbacks() {
   const { data: feedbacks } = await getFeedbacks({ limit: 10, page: 1 });
 
@@ -15,28 +13,21 @@ async function initFeedbacks() {
 
   wrapper.innerHTML = feedbacks
     .map(
-      // the rating string with *STARS* just for easier css styles, remove when actual stars appears.
       item => `
     <div class="swiper-slide">
       <div class="feedback-slide">
-        <div class="rating" data-score="${item.rating}">*STARS*</div>
+        <div class="rating" data-score="${item.rating}"></div>
         <p class="feedback-text">${item.descr}</p>
         <h4 class="feedback-name">${item.name}</h4>
       </div>
     </div>
       `
-    ).join('');
+    )
+    .join('');
 
+  renderStars();
 
-   // raty-js
-  document.querySelectorAll('[data-raty]').forEach(el => {
-    new Raty(el, {
-      starType: 'i',
-		 readOnly: true,
-		 score: el.dataset.score,
-	 });
-  });
-
+  // swiper init
   const swiper = new Swiper('.swiper', {
     modules: [Navigation],
     slidesPerView: 1,
@@ -57,6 +48,27 @@ async function initFeedbacks() {
   });
 }
 
+// stars
+function renderStars() {
+  const ratings = document.querySelectorAll('.rating');
+  ratings.forEach(ratingEl => {
+    const score = parseInt(ratingEl.dataset.score, 10) || 0;
+    ratingEl.innerHTML = '';
+
+    for (let i = 1; i <= 5; i++) {
+      const svg = `
+        <svg width="20" height="20" class="star" style="fill: ${
+          i <= score ? 'var(--color-affair)' : 'var(--color-scheme-1-text)'
+        }">
+          <use href="img/icons.svg#icon-star"></use>
+        </svg>
+      `;
+      ratingEl.insertAdjacentHTML('beforeend', svg);
+    }
+  });
+}
+
+// pagination for swiper
 function createCustomPagination(swiper) {
   const pagination = document.querySelector('.swiper-pagination');
   pagination.innerHTML = '';
