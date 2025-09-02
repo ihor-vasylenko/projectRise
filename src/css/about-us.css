@@ -1,5 +1,5 @@
 .about {
-    padding: 64px 16px;
+    padding: 64px 0px;
 }
 
 .about__container {
@@ -43,9 +43,6 @@
 
 
 @media (min-width: 768px) {
-    .about{
-        padding: 64px 32px;
-    }
     .about__container {
         flex-direction: column;
         text-align: left;
@@ -58,7 +55,7 @@
 
 @media (min-width: 1440px) {
     .about {
-        padding: 112px 64px;
+        padding: 112px 0px;
     }
     .about__container {
         flex-direction: row;

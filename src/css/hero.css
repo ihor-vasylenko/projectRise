@@ -1,11 +1,5 @@
-.container {
-  max-width: 320px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
 .hero-section {
-  padding: 0px 64px;
+  padding: 64px 0px;
   background: linear-gradient(to bottom, #060307 0%, rgba(35, 19, 43, 0) 10%),
     linear-gradient(to top, #060307 0%, rgba(35, 19, 43, 0) 10%), #060307;
   background-color: var(--color-scheme-3-foreground);
@@ -60,10 +54,6 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding: 0 32px;
-  }
   .hero-title {
     margin-bottom: 24px;
   }
@@ -79,9 +69,8 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding: 0 64px;
+  .hero-section {
+    padding: 112px 0;
   }
   .hero-title {
     font-size: 84px;
