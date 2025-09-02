@@ -102,10 +102,6 @@ export function initArtistModal() {
     }
   });
 
-  let lastFocusedElementBeforeModal = null;
-
-  //все що нижче це зміни які потрібно зробити
-
   function openModal() {
     lastFocusedElement = document.activeElement; // зберегли останній фокус
     modal.setAttribute('aria-hidden', 'false');
