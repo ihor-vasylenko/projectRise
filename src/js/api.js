@@ -41,7 +41,7 @@ export const getFeedbacks = async (params = {}) => {
  * @param {string} id - Унікальний ідентифікатор виконавця.
  * @returns {Promise<Object|null>} Проміс, який повертає об'єкт виконавця з ключем `tracksList`.
  */
-export const getArtistById = async (id) => {
+export const getArtistById = async id => {
   try {
     const response = await axios.get(`/artists/${id}`);
     return response.data;
@@ -57,19 +57,20 @@ export const getArtistById = async (id) => {
  * @param {string} id - Унікальний ідентифікатор виконавця.
  * @returns {Promise<Object|null>} Проміс, який повертає повний об'єкт виконавця з ключем `albumsList`.
  */
-export const getArtistDetailsWithAlbums = async (id) => {
-    try {
-      const response = await axios.get(`/artists/${id}/albums`);
-      return response.data;
-    } catch (error) {
-      console.error(`Помилка під час завантаження альбомів для виконавця з id ${id}:`, error);
-      throw error;
-    }
+export const getArtistDetailsWithAlbums = async id => {
+  try {
+    const response = await axios.get(`/artists/${id}/albums`);
+    return response.data;
+  } catch (error) {
+    console.error(
+      `Помилка під час завантаження альбомів для виконавця з id ${id}:`,
+      error
+    );
+    throw error;
+  }
 };
 
-
 // ФУНКЦІЇ ДЛЯ ДОДАТКОВИХ ЗАВДАНЬ (закоментовано на майбутнє)
- 
 
 // /**
 //  * Отримує список усіх музичних жанрів для фільтра.
