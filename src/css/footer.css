@@ -17,10 +17,11 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 30px;
+  fill: currentColor;
 }
 
 .footer-logo-icon {
-  fill: var(--color-affair);
+  color: var(--color-affair);
 }
 
 .footer-nav {
@@ -43,7 +44,7 @@
   color: var(--color-affair-light);
 }
 
-.footer-bottom {
+.footer-links {
   border-top: 1px solid var(--color-scheme-1-border);
   padding-top: 30px;
   display: flex;
@@ -70,8 +71,6 @@
 .social-icon {
   fill: currentColor;
   display: block;
-  width: 40px;
-  height: 41px;
 }
 
 .copyright {
@@ -98,7 +97,7 @@
     gap: 40px;
   }
 
-  .footer-bottom {
+  .footer-links {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -130,7 +129,7 @@
     margin-bottom: 32px;
   }
 
-  .footer-bottom {
+  .footer-links {
     padding-top: 32px;
   }
 
