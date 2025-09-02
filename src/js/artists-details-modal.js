@@ -10,6 +10,8 @@ export function initArtistModal() {
   const genresEl = modal.querySelector('.artist-genres');
   const albumsEl = modal.querySelector('.artist-albums');
 
+  let lastFocusedElement = null; // збережемо, хто відкрив модалку
+
   const getYoutubeLink = vid => {
     if (!vid) return '';
     return vid.startsWith('http')
@@ -50,10 +52,8 @@ export function initArtistModal() {
         .map(g => `<span>${g}</span>`)
         .join('');
 
-      albumsEl.innerHTML = '<h3>Albums</h3>';
-
       if (artist.albumsList && artist.albumsList.length > 0) {
-        albumsEl.innerHTML += artist.albumsList
+        albumsEl.innerHTML = artist.albumsList
           .map(
             album => `
             <div class="album">
@@ -93,7 +93,7 @@ export function initArtistModal() {
           )
           .join('');
       } else {
-        albumsEl.innerHTML += '<p>No albums found</p>';
+        albumsEl.innerHTML = '<p>No albums found</p>';
       }
 
       openModal();
@@ -103,13 +103,22 @@ export function initArtistModal() {
   });
 
   function openModal() {
+    lastFocusedElement = document.activeElement; // зберегли останній фокус
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('open');
+    closeBtn.focus(); // одразу сфокусуємось на кнопці закриття
   }
 
   function closeModal() {
+    if (document.activeElement) {
+      document.activeElement.blur(); // знімаємо фокус з кнопки
+    }
     modal.setAttribute('aria-hidden', 'true');
     modal.classList.remove('open');
+
+    if (lastFocusedElement) {
+      lastFocusedElement.focus(); // повертаємо фокус назад
+    }
   }
 
   closeBtn.addEventListener('click', closeModal);
