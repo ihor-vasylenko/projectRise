@@ -9,10 +9,12 @@ html {
 body {
 	padding-top: 80px;
 }
+
 .logo-artist-image,
 .burger-button-logo {
 	fill: var(--color-scheme-2-accent);
 	transition: 0.3s ease-in-out;
+	display: block;
 }
 
 .logo-artists:hover .logo-artist-image {
