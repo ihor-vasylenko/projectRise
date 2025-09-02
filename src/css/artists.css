@@ -110,15 +110,15 @@
     text-decoration: underline;
 }
 
-.link-more .icon {
-    fill: currentColor;
+.icon-learn-more{
+    fill: var(--color-white);
 }
 
 .artists-actions {
     display: flex;
     justify-content: center;
 }
-.btn.load-more {
+.btn-load-more {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -138,17 +138,17 @@
     transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn.load-more:hover:not([disabled]) {
+.btn-load-more:hover:not([disabled]) {
     background: var(--color-affair-light);
 }
 
-.btn.load-more[disabled] {
+.btn-load-more[disabled] {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-.btn.load-more .icon {
-    fill: currentColor;
+.icon-load-more {
+    fill: var(--color-white);
 }
 
 .artists-empty {
@@ -162,7 +162,7 @@
     .artists-list {
         gap: 32px;
     }
-    .btn.load-more {
+    .btn-load-more {
         width: 340px;
     }
 }
@@ -181,7 +181,7 @@
     .artists-list {
         grid-template-columns: 1fr 1fr;
     }
-    .btn.load-more {
+    .btn-load-more {
         width: 170px;
     }
 }
