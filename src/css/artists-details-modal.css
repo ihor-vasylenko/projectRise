@@ -1,13 +1,13 @@
-/* ====== Overlay ====== */
+/* --- Overlay та анімація --- */
 #artist-modal {
     position: fixed;
     inset: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: rgba(18, 18, 18, 0.7);
+    justify-content: center;
     backdrop-filter: blur(6px);
-    z-index: 999;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -18,26 +18,32 @@
     visibility: visible;
 }
 
-/* ====== Modal content ====== */
-#artist-modal .modal-content {
-    position: relative;
-    background: #1e1e1e;
-    color: #fff;
-    max-width: 800px;
-    width: 100%;
+/* --- Контент модалки --- */
+.modal-content {
+width: 1312px;
+    height: 1635px;
+    max-width: 90vw;
     max-height: 90vh;
+
+    position: relative;
+    background: #1a1a1a;
+    
+    color: #ececec;
+    
+   
+    
+    
     overflow-y: auto;
     border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 0.4s ease;
+    padding: 64px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    animation: fadeInModal 0.4s ease-out;
 }
 
-/* Animation */
-@keyframes fadeInUp {
+@keyframes fadeInModal {
     from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(-20px);
     }
 
     to {
@@ -46,126 +52,189 @@
     }
 }
 
-/* ====== Close button ====== */
-#artist-modal .modal-close {
+/* --- Закриття --- */
+.modal-close {
     position: absolute;
     top: 16px;
     right: 16px;
-    background: none;
+    background: transparent;
     border: none;
-    font-size: 28px;
-    color: #fff;
+    color: #f5f5f5;
+    font-size: 30px;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
 }
 
-#artist-modal .modal-close:hover {
-    color: #ff5252;
+.modal-close:hover {
+    color: #ffffff;
 }
 
-/* ====== Artist name ====== */
-#artist-modal .artist-name {
-    font-size: 28px;
+/* --- Титул --- */
+.artist-name {
+    font-size: 30px;
     font-weight: 700;
-    margin-bottom: 20px;
     text-align: center;
+    margin-bottom: 24px;
 }
 
-/* ====== Artist image ====== */
-#artist-modal .artist-image {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-#artist-modal .artist-image img {
-    max-width: 280px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* ====== Info list ====== */
-#artist-modal .artist-info {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-#artist-modal .artist-info li {
-    margin-bottom: 6px;
-}
-
-/* ====== Biography ====== */
-#artist-modal .artist-bio h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-#artist-modal .artist-bio p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #ccc;
-}
-
-/* ====== Genres ====== */
-#artist-modal .artist-genres {
-    margin: 20px 0;
+/* --- Секція артиста --- */
+.artist-box {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 24px;
 }
 
-#artist-modal .artist-genres span {
-    background: #333;
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.artist-image img {
+    width: 240px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
-/* ====== Albums & Tracks ====== */
-#artist-modal .artist-albums h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 24px 0 12px;
+.artist-info {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #c4c4c4;
+    font-size: 15px;
 }
 
-#artist-modal .album h4 {
-    font-size: 16px;
+.artist-info li {
     margin-bottom: 10px;
 }
 
-#artist-modal table {
+.artist-info strong {
+    color: #fff;
+}
+
+/* --- Біографія --- */
+.artist-bio h3 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.artist-bio p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d0d0d0;
+}
+
+/* --- Жанри --- */
+.artist-genres {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.artist-genres span {
+    background: #272727;
+    color: #ffffff;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 20px;
+    border: 1px solid #444;
+}
+
+/* --- Альбоми --- */
+.artist-albums h3 {
+    font-size: 22px;
+    margin: 28px 0 16px;
+    text-align: center;
+}
+
+/* --- Сітка альбомів --- */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    /* 4 колонки */
+    gap: 32px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+@media (min-width: 768px) {
+    .album-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* --- Альбом --- */
+
+
+.album {
+    border-radius: 16px;
+        padding: 14px 11px;
+        width: 272px;
+        height: 564px;
+        min-width: 272px;
+        background: #262626;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+}
+
+.album h4 {
+font-size: 18px;
+    margin-bottom: 14px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Таблиця всередині альбому */
+.album table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    font-size: 14px;
+    flex-grow: 1;
 }
 
-#artist-modal th,
-#artist-modal td {
+.album th {
     padding: 10px;
-    border-bottom: 1px solid #333;
-}
-
-#artist-modal th {
     text-align: left;
+    font-size: 14px;
     color: #aaa;
-    font-weight: 500;
-    font-size: 13px;
+    border-bottom: 2px solid #333;
 }
 
-#artist-modal td a {
-    color: #ff5252;
-    font-size: 16px;
+.album td {
+    padding: 10px;
+    font-size: 14px;
+    color: #ccc;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.album tr:hover td {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.album a {
+    color: #ff4747;
+    font-size: 17px;
     text-decoration: none;
-    transition: opacity 0.2s;
 }
 
-#artist-modal td a:hover {
-    opacity: 0.7;
+.album a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 1200px) {
+    .album-grid {
+        grid-template-columns: repeat(2, 272px);
+    }
+}
+
+/* Телефони (до 600px) → 1 колонка */
+@media (max-width: 600px) {
+    .album-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .album {
+        width: 100%;
+        min-width: auto;
+        height: auto;
+        /* щоб блоки підтягувалися по контенту */
+    }
 }
