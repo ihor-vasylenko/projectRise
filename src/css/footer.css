@@ -1,27 +1,27 @@
+/* --- 1. Стилі для мобільних пристроїв (Mobile First) --- */
 .footer {
   background-color: var(--color-neutral-darkest);
   color: var(--color-white);
   padding: 50px 0;
-  font-size: 16px;
   font-family: var(--font-family);
+  font-size: 16px;
 }
 
 .footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .footer-logo {
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 24px;
-  font-weight: bold;
   margin-bottom: 30px;
-  fill: currentColor;
 }
 
+/* ВИПРАВЛЕНО: Додано стиль для іконки логотипа */
 .footer-logo-icon {
-  color: var(--color-affair);
+  fill: var(--color-affair);
 }
 
 .footer-nav {
@@ -29,6 +29,9 @@
 }
 
 .footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +39,8 @@
 }
 
 .footer-nav a {
+  color: var(--color-white);
+  text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
@@ -53,7 +58,18 @@
   gap: 24px;
 }
 
+.copyright {
+  margin: 0;
+  color: var(--color-neutral);
+  font-size: 14px;
+  text-align: center;
+  order: 2;
+}
+
 .social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   gap: 25px;
   order: 1;
@@ -71,16 +87,11 @@
 .social-icon {
   fill: currentColor;
   display: block;
+  width: 40px;
+  height: 40px;
 }
 
-.copyright {
-  margin: 0;
-  color: var(--color-neutral);
-  font-size: 14px;
-  text-align: center;
-  order: 2;
-}
-
+/* --- 2. Медіа-запит для планшетів (Tablet) --- */
 @media (min-width: 768px) {
   .footer {
     padding-top: 80px;
@@ -93,7 +104,6 @@
 
   .footer-nav ul {
     flex-direction: row;
-    justify-content: center;
     gap: 40px;
   }
 
@@ -118,13 +128,8 @@
   }
 }
 
+/* --- 3. Медіа-запит для десктопів (Desktop) --- */
 @media (min-width: 1440px) {
-  .footer-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .footer-logo {
     margin-bottom: 32px;
   }
