@@ -1,5 +1,5 @@
 .feedback-section {
-  padding: 64px 16px;
+  padding: 64px 0px;
 }
 
 .feedback-slide {
@@ -65,10 +65,6 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .feedback-section {
-    padding: 64px 32px;
-  }
-
   .feedback-slide {
     max-width: 704px;
     height: 253px;
@@ -106,7 +102,7 @@
 
 @media only screen and (min-width: 1440px) {
   .feedback-section {
-    padding: 112px 64px;
+    padding: 112px 0px;
   }
   .feedback-slide {
     max-width: 1312px;

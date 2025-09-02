@@ -1,6 +1,7 @@
 import { getArtists, getArtistDetailsWithAlbums, getArtistById } from './api.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import spriteUrl from '../img/icons.svg?url';
 
 iziToast.settings({
   position: 'topRight',
@@ -142,7 +143,7 @@ function cardTemplate(a) {
         <button class="link-more" type="button" data-learn-more>
           Learn More
           <svg class="icon-learn-more" width="24" height="24" aria-hidden="true">
-            <use href="/img/icons.svg#icon-filled-arrow"></use>
+            <use href="${spriteUrl}#icon-filled-arrow"></use>
           </svg>
         </button>
       </div>
