@@ -7,7 +7,7 @@ import{a as d,i as h,S as v,N as b}from"./assets/vendor-DircHDZc.js";(function()
       <div class="card-actions">
         <button class="link-more" type="button" data-learn-more>
           Learn More
-          <svg class="icon" width="24" height="24" aria-hidden="true">
+          <svg class="icon-learn-more" width="24" height="24" aria-hidden="true">
             <use href="/img/icons.svg#icon-filled-arrow"></use>
           </svg>
         </button>
