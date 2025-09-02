@@ -46,7 +46,7 @@ import{a as g,i as $,S as C,N as B}from"./assets/vendor-DircHDZc.js";(function()
         <h4 class="feedback-name">${o.name}</h4>
       </div>
     </div>
-      `).join(""),X(),new C(".swiper",{modules:[B],slidesPerView:1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},allowTouchMove:!0,on:{init(){Z(this),A(this)},slideChange(){A(this)}}})}function X(){document.querySelectorAll(".rating").forEach(e=>{const o=parseInt(e.dataset.score,10)||0;e.innerHTML="";for(let r=1;r<=5;r++){const s=`
+      `).join(""),X(),new C(".swiper",{modules:[B],slidesPerView:1,navigation:{nextEl:".custom-swiper-btn-next",prevEl:".custom-swiper-btn-prev"},allowTouchMove:!0,on:{init(){Z(this),A(this)},slideChange(){A(this)}}})}function X(){document.querySelectorAll(".rating").forEach(e=>{const o=parseInt(e.dataset.score,10)||0;e.innerHTML="";for(let r=1;r<=5;r++){const s=`
         <svg width="20" height="20" class="star" style="fill: ${r<=o?"var(--color-affair)":"var(--color-scheme-1-text)"}">
           <use href="${w}#icon-star"></use>
         </svg>
