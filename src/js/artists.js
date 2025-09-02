@@ -141,7 +141,7 @@ function cardTemplate(a) {
       <div class="card-actions">
         <button class="link-more" type="button" data-learn-more>
           Learn More
-          <svg class="icon" width="24" height="24" aria-hidden="true">
+          <svg class="icon-learn-more" width="24" height="24" aria-hidden="true">
             <use href="/img/icons.svg#icon-filled-arrow"></use>
           </svg>
         </button>
@@ -169,20 +169,12 @@ function setLoading(flag) {
   if (refs.loadMore) refs.loadMore.disabled = flag || refs.loadMore.hidden;
 }
 
-// Обробник кліка по картці (відправка події для модалки) 
-
 function onCardClick(e) {
   const btn = e.target.closest('[data-learn-more]');
   if (!btn) return;
   const card = e.target.closest('.artist-card');
   const id = card?.dataset.id;
   if (!id) return;
-
-// Відправляємо кастомну подію для модалки 
-// artists:open - сигнал, що користувач натиснув «Learn More»
-// У події:
-// - id: унікальний ідентифікатор артиста
-// - fetchDetails(): готова функція для отримання детальних даних про артиста
 
   const ev = new CustomEvent('artists:open', {
     bubbles: true,
@@ -198,7 +190,6 @@ function onCardClick(e) {
     },
   });
 
-// Відправляємо сигнал — модалка зможе його «почути» через addEventListener
   card.dispatchEvent(ev);
 }
 
