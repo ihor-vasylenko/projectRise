@@ -65,7 +65,7 @@
     white-space: nowrap;
 }
 
-.artist-name {
+.artist-name-section {
     font-family: var(--second-family);
     font-weight: 700;
     font-size: 32px;

@@ -1,4 +1,8 @@
-import { getArtists, getArtistDetailsWithAlbums, getArtistById } from './api.js';
+import {
+  getArtists,
+  getArtistDetailsWithAlbums,
+  getArtistById,
+} from './api.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import spriteUrl from '../img/icons.svg?url';
@@ -17,9 +21,9 @@ const toast = {
     iziToast.error({
       title: 'Error',
       message,
-      backgroundColor: 'var(--color-affair-dark)',   
-      titleColor: 'var(--color-white)',              
-      messageColor: 'var(--opacity-white-60)',       
+      backgroundColor: 'var(--color-affair-dark)',
+      titleColor: 'var(--color-white)',
+      messageColor: 'var(--opacity-white-60)',
       progressBarColor: 'var(--color-affair-light)',
       overlay: false,
     });
@@ -29,9 +33,7 @@ const toast = {
 function getAxiosErrorMessage(err) {
   if (err?.response) {
     const serverMsg =
-      err.response.data?.message ||
-      err.response.data?.error ||
-      err.message;
+      err.response.data?.message || err.response.data?.error || err.message;
     return `Server error: ${serverMsg}`;
   }
   if (err?.request) {
@@ -82,8 +84,12 @@ async function loadPage(page) {
   try {
     const payload = await getArtists({ page, limit: STATE.limit });
 
-    const { items, page: realPage, limit, total } =
-      normalizeListPayload(payload, page, STATE.limit);
+    const {
+      items,
+      page: realPage,
+      limit,
+      total,
+    } = normalizeListPayload(payload, page, STATE.limit);
 
     STATE.page = realPage;
     STATE.limit = limit;
@@ -135,9 +141,15 @@ function cardTemplate(a) {
     .join('');
   return `
     <li class="artist-card" data-id="${a.id}">
-      ${a.photo ? `<img class="artist-cover" src="${a.photo}" alt="${escapeHtml(a.name)}" loading="lazy" />` : ''}
+      ${
+        a.photo
+          ? `<img class="artist-cover" src="${a.photo}" alt="${escapeHtml(
+              a.name
+            )}" loading="lazy" />`
+          : ''
+      }
       <div class="tags">${tags}</div>
-      <h4 class="artist-name">${escapeHtml(a.name)}</h4>
+      <h4 class="artist-name-section">${escapeHtml(a.name)}</h4>
       <p class="artist-desc">${escapeHtml(a.short)}</p>
       <div class="card-actions">
         <button class="link-more" type="button" data-learn-more>
@@ -196,8 +208,9 @@ function onCardClick(e) {
 
 function escapeHtml(str = '') {
   return String(str)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
-
