@@ -106,6 +106,7 @@ export function initArtistModal() {
     lastFocusedElement = document.activeElement; // зберегли останній фокус
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('open');
+    document.body.classList.add('no-scroll');
     closeBtn.focus(); // одразу сфокусуємось на кнопці закриття
   }
 
@@ -115,6 +116,7 @@ export function initArtistModal() {
     }
     modal.setAttribute('aria-hidden', 'true');
     modal.classList.remove('open');
+    document.body.classList.remove('no-scroll');
 
     if (lastFocusedElement) {
       lastFocusedElement.focus(); // повертаємо фокус назад

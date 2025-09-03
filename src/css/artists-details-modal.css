@@ -1,3 +1,13 @@
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.modal-wrapper{
+    background: rgba(0, 0, 0, 0.25);
+    padding: 64px;
+}
+
 /* --- Overlay та анімація --- */
 #artist-modal {
     position: fixed;
@@ -24,20 +34,14 @@ width: 1312px;
     height: 1635px;
     max-width: 90vw;
     max-height: 90vh;
-
     position: relative;
-    background: #1a1a1a;
-    
     color: #ececec;
-    
-   
-    
-    
     overflow-y: auto;
     border-radius: 16px;
     padding: 64px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
     animation: fadeInModal 0.4s ease-out;
+    background: var(--color-scheme-1-background);
 }
 
 @keyframes fadeInModal {
@@ -80,25 +84,26 @@ width: 1312px;
 /* --- Секція артиста --- */
 .artist-box {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     gap: 24px;
 }
 
 .artist-image img {
-    width: 240px;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    width: 576px;
+    height: 354px;
+    object-fit: cover;
 }
 
 .artist-info {
-    flex: 1;
     list-style: none;
     padding: 0;
     margin: 0;
     color: #c4c4c4;
     font-size: 15px;
 }
-
+    
 .artist-info li {
     margin-bottom: 10px;
 }
@@ -119,6 +124,9 @@ width: 1312px;
     font-size: 15px;
     line-height: 1.6;
     color: #d0d0d0;
+    overflow: hidden;
+    width: 576px;
+    height: 162px;
 }
 
 /* --- Жанри --- */
@@ -163,31 +171,46 @@ width: 1312px;
 
 /* --- Альбом --- */
 
-
 .album {
     border-radius: 16px;
-        padding: 14px 11px;
-        width: 272px;
-        height: 564px;
-        min-width: 272px;
-        background: #262626;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
-        display: flex;
-        flex-direction: column;
+    padding: 14px 11px;
+    width: 272px;
+    height: 564px;
+    min-width: 272px;
+    background: #262626;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.album-title {
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    padding: 48px 0 16px;
+}
+
+.artist-albums{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 27px;
 }
 
 .album h4 {
-font-size: 18px;
+    font-size: 16px;
     margin-bottom: 14px;
     color: #ffffff;
-    text-align: center;
+    
 }
 
 /* Таблиця всередині альбому */
 .album table {
     width: 100%;
     border-collapse: collapse;
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
 .album th {
@@ -205,8 +228,19 @@ font-size: 18px;
     border-bottom: 1px solid #2a2a2a;
 }
 
+.album tr:nth-child(even) {
+    background: var(--color-scheme-2-foreground);
+    
+}
+
+.album tr:nth-child(odd) {
+    background: var(--opacity-white-10);
+    
+}
+
 .album tr:hover td {
     background: rgba(255, 255, 255, 0.05);
+
 }
 
 .album a {
@@ -238,3 +272,7 @@ font-size: 18px;
         /* щоб блоки підтягувалися по контенту */
     }
 }
+
+
+
+
