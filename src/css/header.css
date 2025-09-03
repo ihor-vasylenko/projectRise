@@ -1,13 +1,20 @@
 .container-header {
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background-color: var(--color-scheme-1-background);
+	padding: 6.5px 0;
 }
 
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 60px;
 }
-body {
-	padding-top: 80px;
+
+body{
+	padding-top: 64px;
 }
 
 .logo-artist-image,
@@ -20,17 +27,12 @@ body {
 .logo-artists:hover .logo-artist-image {
 	fill: var(--color-affair);
 }
+
 .top-nav {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 6.5px 0 6.5px;
-	min-width: 295px;
-	position: fixed;
-	top: 0;
-	z-index: 1000;
-	background-color: var(--color-scheme-1-background);
 }
 
 .top-nav-menu {
@@ -134,6 +136,7 @@ body {
 body.lock {
 	overflow: hidden;
 }
+
 @media only screen and (min-width: 768px) {
 	body {
 		padding-top: 87px;
@@ -157,15 +160,8 @@ body.lock {
 		display: none;
 	}
 
-	.top-nav {
+	.container-header {
 		padding: 10.5px 0;
-		min-width: 704px;
-		margin-bottom: 90px;
 	}
 }
 
-@media only screen and (min-width: 1440px) {
-	.top-nav {
-		min-width: 1312px;
-	}
-}
