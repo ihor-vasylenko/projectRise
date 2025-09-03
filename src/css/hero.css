@@ -1,5 +1,5 @@
 .hero-section {
-  padding: 64px 0px;
+  padding-top: 64px;
   background: linear-gradient(to bottom, #060307 0%, rgba(35, 19, 43, 0) 10%),
     linear-gradient(to top, #060307 0%, rgba(35, 19, 43, 0) 10%), #060307;
   background-color: var(--color-scheme-3-foreground);
@@ -54,11 +54,15 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .hero-section {
+      padding-top: 32px;
+  }
   .hero-title {
     margin-bottom: 24px;
   }
   .hero-paragraph {
     margin-bottom: 32px;
+    max-width: 624px;
   }
   .hero-btn {
     padding: 10px 24px;
@@ -70,7 +74,7 @@
 
 @media only screen and (min-width: 1440px) {
   .hero-section {
-    padding: 112px 0;
+    padding: 0;
   }
   .hero-title {
     font-size: 84px;
