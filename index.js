@@ -38,7 +38,7 @@ import{a as g,i as $,S as C,N as B}from"./assets/vendor-DircHDZc.js";(function()
                     </table>
                   `:"<p>No tracks</p>"}
             </div>
-          `).join(""):L.innerHTML="<p>No albums found</p>",q()}catch(i){console.error("Modal error:",i)}});function q(){p=document.activeElement,t.setAttribute("aria-hidden","false"),t.classList.add("open"),o.focus()}function b(){document.activeElement&&document.activeElement.blur(),t.setAttribute("aria-hidden","true"),t.classList.remove("open"),p&&p.focus()}o.addEventListener("click",b),e.addEventListener("click",b),document.addEventListener("keydown",l=>{l.key==="Escape"&&b()})}async function J(){const{data:t}=await x({limit:10,page:1}),e=document.querySelector(".swiper-wrapper");e.innerHTML=t.map(o=>`
+          `).join(""):L.innerHTML="<p>No albums found</p>",q()}catch(i){console.error("Modal error:",i)}});function q(){p=document.activeElement,t.setAttribute("aria-hidden","false"),t.classList.add("open"),document.body.classList.add("no-scroll"),o.focus()}function b(){document.activeElement&&document.activeElement.blur(),t.setAttribute("aria-hidden","true"),t.classList.remove("open"),document.body.classList.remove("no-scroll"),p&&p.focus()}o.addEventListener("click",b),e.addEventListener("click",b),document.addEventListener("keydown",l=>{l.key==="Escape"&&b()})}async function J(){const{data:t}=await x({limit:10,page:1}),e=document.querySelector(".swiper-wrapper");e.innerHTML=t.map(o=>`
     <div class="swiper-slide">
       <div class="feedback-slide">
         <div class="rating" data-score="${o.rating}"></div>
