@@ -1,3 +1,60 @@
+.track-row {
+
+
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 10px 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.2s ease;
+}
+
+.track-row:nth-child(even) {
+    background: var(--opacity-white-10);
+}
+
+.track-row:nth-child(odd) {
+    background: var(--color-scheme-2-foreground);
+    
+}
+
+.track-row:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.track-title {
+    color: #ffffff;
+    font-size: 14px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-duration {
+    color: #aaa;
+    font-size: 13px;
+    margin-left: 12px;
+    min-width: 50px;
+    text-align: center;
+
+}
+
+.track-link {
+    color: #ff4747;
+    font-size: 16px;
+    text-decoration: none;
+    
+    transition: opacity 0.2s ease;
+}
+
+.track-link:hover {
+    opacity: 0.8;
+}
+
 .no-scroll {
     overflow: hidden;
     height: 100vh;
@@ -44,17 +101,6 @@ width: 1312px;
     background: var(--color-scheme-1-background);
 }
 
-@keyframes fadeInModal {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* --- Закриття --- */
 .modal-close {
@@ -163,12 +209,6 @@ width: 1312px;
     margin-top: 32px;
 }
 
-@media (min-width: 768px) {
-    .album-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 /* --- Альбом --- */
 
 .album {
@@ -177,7 +217,7 @@ width: 1312px;
     width: 272px;
     height: 564px;
     min-width: 272px;
-    background: #262626;
+    background: var(--color-scheme-2-foreground);
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
@@ -228,16 +268,6 @@ width: 1312px;
     border-bottom: 1px solid #2a2a2a;
 }
 
-.album tr:nth-child(even) {
-    background: var(--color-scheme-2-foreground);
-    
-}
-
-.album tr:nth-child(odd) {
-    background: var(--opacity-white-10);
-    
-}
-
 .album tr:hover td {
     background: rgba(255, 255, 255, 0.05);
 
@@ -247,32 +277,182 @@ width: 1312px;
     color: #ff4747;
     font-size: 17px;
     text-decoration: none;
+    margin-left: -7px;
+    transform: translate(5px, 0px);
 }
 
 .album a:hover {
     opacity: 0.8;
 }
 
-@media (max-width: 1200px) {
-    .album-grid {
-        grid-template-columns: repeat(2, 272px);
-    }
-}
 
-/* Телефони (до 600px) → 1 колонка */
-@media (max-width: 600px) {
-    .album-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 1024px) and (min-width: 601px) {
+    .modal-content {
+        width: 95vw;
+        padding: 32px;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .artist-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .artist-image {
+         width: 100%;
+    }
+    
+    .artist-image img {
+        width: 100%;
+        object-fit: cover;
+        max-width: 100%;
+        display: block;
+    }
+
+    .artist-bio p {
+       font-size: 15px;
+        line-height: 1.6;
+        max-height: 162px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        width: 100%;
+        height: auto;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+    }
+    .artist-albums{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            justify-content: center;
+            display: grid;
     }
 
     .album {
         width: 100%;
-        min-width: auto;
         height: auto;
-        /* щоб блоки підтягувалися по контенту */
+        min-width: auto;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+    }
+
+    .album-title {
+        font-size: 20px;
+        padding: 24px 0 12px;
+    }
+
+    .album table {
+        font-size: 13px;
+    }
+
+    .album td,
+    .album th {
+        padding: 8px;
+    }
+
+    .album a {
+        font-size: 15px;
+        margin-left: -5px;
     }
 }
 
+@media (max-width: 600px) {
+    .modal-content {
+        width: 100vw;
+        height: 100vh;
+        padding: 24px;
+        border-radius: 0;
+        max-height: none;
+        overflow-y: auto;
+    }
 
+    .artist-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
 
+    .artist-image img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
 
+    .artist-info {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .artist-bio h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .artist-bio p {
+        font-size: 14px;
+        line-height: 1.5;
+        max-height: 126px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        width: auto;
+    }
+
+    .artist-genres {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .artist-genres span {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .album-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .album {
+        width: 100%;
+        height: auto;
+        padding: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .album-title {
+        font-size: 18px;
+        padding: 16px 0 8px;
+    }
+
+    .album h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .album table {
+        font-size: 12px;
+    }
+
+    .album td,
+    .album th {
+        padding: 6px;
+    }
+
+    .album a {
+        font-size: 14px;
+        margin-left: -4px;
+    }
+
+    .modal-close {
+        font-size: 26px;
+        top: 12px;
+        right: 12px;
+    }
+}
