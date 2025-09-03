@@ -54,43 +54,37 @@ export function initArtistModal() {
 
       if (artist.albumsList && artist.albumsList.length > 0) {
         albumsEl.innerHTML = artist.albumsList
-          .map(
-            album => `
-            <div class="album">
-              <h4>${album.strAlbum || 'Untitled'}</h4>
+          .map(album => {
+            const tracksMarkup =
+              Array.isArray(album.tracks) && album.tracks.length > 0
+                ? album.tracks
+                    .map(
+                      track => `
+            <div class="track-row">
+              <span class="track-title">${track.strTrack || 'N/A'}</span>
+              <span class="track-duration">${formatDuration(
+                track.intDuration
+              )}</span>
               ${
-                Array.isArray(album.tracks) && album.tracks.length > 0
-                  ? `
-                    <table>
-                      <thead>
-                        <tr><th>Title</th><th>Duration</th><th>Link</th></tr>
-                      </thead>
-                      <tbody>
-                        ${album.tracks
-                          .map(
-                            track => `
-                            <tr>
-                              <td>${track.strTrack || 'N/A'}</td>
-                              <td>${formatDuration(track.intDuration)}</td>
-                              <td>${
-                                track.movie
-                                  ? `<a href="${getYoutubeLink(
-                                      track.movie
-                                    )}" target="_blank" rel="noopener noreferrer">▶</a>`
-                                  : '<span style="opacity: 0.5;">—</span>'
-                              }</td>
-                            </tr>
-                          `
-                          )
-                          .join('')}
-                      </tbody>
-                    </table>
-                  `
-                  : '<p>No tracks</p>'
+                track.movie
+                  ? `<a href="${getYoutubeLink(
+                      track.movie
+                    )}" target="_blank" rel="noopener noreferrer" class="track-link">▶</a>`
+                  : '<span style="opacity: 0.5;">—</span>'
               }
             </div>
           `
-          )
+                    )
+                    .join('')
+                : '<p>No tracks</p>';
+
+            return `
+      <div class="album">
+        <h4>${album.strAlbum || 'Untitled'}</h4>
+        ${tracksMarkup}
+      </div>
+    `;
+          })
           .join('');
       } else {
         albumsEl.innerHTML = '<p>No albums found</p>';
