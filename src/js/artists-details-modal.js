@@ -3,7 +3,7 @@ export function initArtistModal() {
   const overlay = document.getElementById('artist-modal-overlay');
   const closeBtn = document.getElementById('artist-modal-close');
 
-  const nameEl = modal.querySelector('.artist-name');
+  const nameEl = modal.querySelector('.artist-name-modal');
   const imageEl = modal.querySelector('.artist-image img');
   const infoEl = modal.querySelector('.artist-info');
   const bioEl = modal.querySelector('.artist-bio p');

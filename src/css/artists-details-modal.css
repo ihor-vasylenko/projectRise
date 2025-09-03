@@ -1,7 +1,4 @@
 .track-row {
-
-
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -104,7 +101,7 @@ width: 1312px;
 
 /* --- Закриття --- */
 .modal-close {
-    position: absolute;
+    position: fixed;
     top: 16px;
     right: 16px;
     background: transparent;
@@ -120,7 +117,7 @@ width: 1312px;
 }
 
 /* --- Титул --- */
-.artist-name {
+.artist-name-modal {
     font-size: 30px;
     font-weight: 700;
     text-align: center;
