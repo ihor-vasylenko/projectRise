@@ -34,8 +34,8 @@ async function initFeedbacks() {
     modules: [Navigation],
     slidesPerView: 1,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.custom-swiper-btn-next',
+      prevEl: '.custom-swiper-btn-prev',
     },
     allowTouchMove: true,
     on: {
