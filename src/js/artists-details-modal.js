@@ -1,3 +1,5 @@
+import icons from '/img/icons.svg?url';
+
 export function initArtistModal() {
   const modal = document.getElementById('artist-modal');
   const overlay = document.getElementById('artist-modal-overlay');
@@ -37,13 +39,14 @@ export function initArtistModal() {
       imageEl.src = artist.strArtistThumb || '';
       imageEl.alt = artist.strArtist || 'Artist';
 
-      infoEl.innerHTML = `
+      infoEl.innerHTML = `<ul>
         <li><strong>Years active:</strong> ${artist.intFormedYear || 'N/A'} – ${
         artist.strDisbanded || 'present'
       }</li>
         <li><strong>Sex:</strong> ${artist.strGender || 'N/A'}</li>
         <li><strong>Members:</strong> ${artist.intMembers || 'N/A'}</li>
         <li><strong>Country:</strong> ${artist.strCountry || 'N/A'}</li>
+        </ul>
       `;
 
       bioEl.textContent = artist.strBiographyEN || 'No biography available.';
@@ -69,7 +72,11 @@ export function initArtistModal() {
                 track.movie
                   ? `<a href="${getYoutubeLink(
                       track.movie
-                    )}" target="_blank" rel="noopener noreferrer" class="track-link">▶</a>`
+                    )}" target="_blank" rel="noopener noreferrer" class="track-link">
+                            <svg width="24" height="20" class="artist-modal-yt-icon" >
+                              <use href="${icons}#icon-Youtube"></use>
+                            </svg>
+                            </a>`
                   : '<span style="opacity: 0.5;">—</span>'
               }
             </div>
