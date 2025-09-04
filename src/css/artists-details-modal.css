@@ -10,16 +10,12 @@
 }
 
 .track-row:nth-child(even) {
-    background: var(--opacity-white-10);
+    background: var(--color-scheme-2-foreground);
 }
 
 .track-row:nth-child(odd) {
-    background: var(--color-scheme-2-foreground);
+    background: var(--opacity-white-10);
     
-}
-
-.track-row:hover {
-    background: rgba(255, 255, 255, 0.08);
 }
 
 .track-title {
@@ -50,6 +46,10 @@
 
 .track-link:hover {
     opacity: 0.8;
+}
+
+.artist-modal-yt-icon {
+    fill: var(--color-scheme-1-text);
 }
 
 .no-scroll {
