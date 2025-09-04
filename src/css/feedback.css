@@ -117,6 +117,11 @@
   .feedback-text {
     font-size: 26px;
   }
+	.custom-swiper-btn-prev:not(.swiper-button-disabled):active, 
+	.custom-swiper-btn-next:not(.swiper-button-disabled):active{
+		width: 46px;
+		height: 46px;
+	}
 }
 
 @media only screen and (min-width: 1440px) {
